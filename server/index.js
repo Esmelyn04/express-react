@@ -10,7 +10,18 @@ const port = 3000
 // allow static assets in public folder
 app.use(express.static('public'))
 
+// React app as the root route
+const root = require('path').join(__dirname, '../client','dist')
+app.use(express.static(root))
+
 // define our server routes
+app.get('/', (req, res)=>{
+    // do something when the server processes this request
+
+    // send back a response to the client
+    res.sendFile("index.html", {root})
+})
+
 app.get('/message', (req, res)=>{
     // do something when the server processes this request
 
