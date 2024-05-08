@@ -7,6 +7,9 @@ const app = express()
 // define the port our server will run on
 const port = 3000
 
+// allow static assets in public folder
+app.use(express.static('public'))
+
 // define our server routes
 app.get('/message', (req, res)=>{
     // do something when the server processes this request
@@ -18,6 +21,8 @@ app.get('/message', (req, res)=>{
 
 app.get('/test', (req, res)=>{
     // do something when the server processes this request
+
+    // send back a response to the client
     res.send("Server is operational")
 })
 
